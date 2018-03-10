@@ -1,0 +1,16 @@
+<h2>以下の内容で、保存します。</h2>
+
+<%= form_with(model: @picture, url: pictures_path, local: true) do |form| %>
+  <%= hidden_field_tag :"cache[image]",@picture.image.cache_name %>
+  <%= form.hidden_field :content %>
+
+  <p>内容:<%= @picture.content %></p>
+  <%= image_tag(@picture.image.url) %>
+  <%= form.submit  "登録する" %>
+<% end %>
+
+<%= form_with(model: @picture, url: new_picture_path, local: true, method: 'get') do |form| %>
+  <%= hidden_field_tag :"cache[image]",@picture.image.cache_name %>
+  <%= form.hidden_field :content %>
+  <%= form.submit "もどる", name: 'back' %>
+<% end %>

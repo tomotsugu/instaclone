@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<h2>お気に入り一覧</h2>
+<div class="container">
+
+<div class="row">
+
+<% if @pictures.size != 0 %>
+  <% @pictures.each do |picture| %>
+    <div class="col-xs-12 col-md-6 blog-panel">
+      <tr>
+        <p>
+          <%= image_tag picture.image %>
+        </p>
+        <td><%= picture.content %></td>
+      </tr>
+    </div>
+  <% end %>
+  </div>
+</div>
+<% end %>

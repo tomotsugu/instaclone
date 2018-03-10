@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h2>画像投稿一覧</h2>
+<div class="container">
+  <div>
+    <%= link_to 'New Picture', new_picture_path %>
+  </div>
+<br>
+<br>
+
+  <div class="row">
+
+  <% if @pictures.size != 0 %>
+    <% @pictures.each do |picture| %>
+      <div class="col-xs-12 col-md-6 blog-panel">
+        <p>
+          <%= image_tag picture.image %>
+        </p>
+        <p><%= picture.content %></p>
+        <p><%= link_to 'Show', picture %></p>
+        <p><%= link_to 'Edit', edit_picture_path(picture) %></p>
+        <p><%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+      </div>
+    <% end %>
+  <% end %>
+  </div>
+</div>
+
+<br>
+
