@@ -1,5 +1,7 @@
 class PicturesController < ApplicationController
   before_action :set_picture, only: [:show, :edit, :update, :destroy]
+  before_action :check_login, only: [:index, :show, :new, :create]
+
 
   def index
     @pictures = Picture.all
@@ -7,6 +9,9 @@ class PicturesController < ApplicationController
 
   def show
     @favorite = current_user.favorites.find_by(picture_id: @picture.id)
+    if @favorite.present?
+      @user = User.find(@favorite.user_id)
+    end
   end
 
   def edit
@@ -65,5 +70,10 @@ class PicturesController < ApplicationController
     end
     def picture_params
       params.require(:picture).permit(:image, :content)
+    end
+    def check_login
+      if !logged_in? 
+        redirect_to new_session_path
+      end
     end
 end

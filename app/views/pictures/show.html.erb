@@ -9,6 +9,12 @@
   <strong>Content:</strong>
   <%= @picture.content %>
 </p>
+<% if @user.present? %>
+  <p>
+    <strong>投稿者:</strong>
+    <%= @user.name %>
+  </p>
+<% end %>
 
 <% unless @picture.user == current_user %>
   <% if @favorite.present? %>
