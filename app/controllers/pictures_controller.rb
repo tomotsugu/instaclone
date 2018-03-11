@@ -9,9 +9,7 @@ class PicturesController < ApplicationController
 
   def show
     @favorite = current_user.favorites.find_by(picture_id: @picture.id)
-    if @favorite.present?
-      @user = User.find(@favorite.user_id)
-    end
+    @user = User.find(@picture.user_id)
   end
 
   def edit
