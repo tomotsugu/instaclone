@@ -11,7 +11,7 @@ Rails.application.configure do
 
   # Show full error reports.
   #config.consider_all_requests_local = true
-  config.consider_all_requests_local = false
+  #config.consider_all_requests_local = false
 
   config.action_mailer.perform_caching = false
   config.action_mailer.default_url_options = { host: 'heroku-test-app-tomkat.c9users.io/' }
